@@ -17,19 +17,29 @@ struct T {
 		v = 2;
 		return *this;
 	}
-
-	//Implement a constructor taking a const reference to its own type (T). v should be set to 3.
 	
+	//Implement a constructor taking a const reference to its own type (T). v should be set to 3.
+	T(const T&) {
+		v = 3;
+	}
 
 	//Implement an operator= also taking a reference to its own type. v should be set to 4.
-	
+	T& operator=(const T&) {
+		v = 4;
+		return *this;
+	}
 
 	//Implement a constructor taking an rvalue reference to its own type. v should be set to 5.
-	
+	T(T&&) {
+		v = 5;
+	}
 
 	//Implement a static function called TestSix that returns a T and takes a T&.
 	//  The T it returns should have v set to 5.
 	//  Your function MUST NOT just set v to 5.
+	static T TestSix(T& o) {
+		return std::move(o);
+	}
 
 //STOP HERE. DO NOT modify/add/delete anything below this line.
 	T() = default;
